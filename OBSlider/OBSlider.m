@@ -35,15 +35,6 @@
 @synthesize beganTrackingLocation;
 
 
-- (void) dealloc
-{
-    self.scrubbingSpeeds = nil;
-    self.scrubbingSpeedChangePositions = nil;
-    [normalThumb release];
-    [highlightedThumb release];
-    
-    [super dealloc];
-}
 
 
 - (id) initWithFrame:(CGRect)frame
