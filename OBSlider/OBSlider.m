@@ -20,8 +20,6 @@
 - (NSArray *) defaultScrubbingSpeeds;
 - (NSArray *) defaultScrubbingSpeedChangePositions;
 
-- (void) loadImages;
-
 
 @end
 
@@ -45,8 +43,6 @@
         self.scrubbingSpeeds = [self defaultScrubbingSpeeds];
         self.scrubbingSpeedChangePositions = [self defaultScrubbingSpeedChangePositions];
         self.scrubbingSpeed = [[self.scrubbingSpeeds objectAtIndex:0] floatValue];
-
-        [self loadImages];
     }
     return self;
 }
@@ -74,8 +70,6 @@
         }
         
         self.scrubbingSpeed = [[self.scrubbingSpeeds objectAtIndex:0] floatValue];
-        
-        [self loadImages];
     }
     return self;
 }
@@ -113,9 +107,7 @@
         self.beganTrackingLocation = CGPointMake(thumbRect.origin.x + thumbRect.size.width / 2.0f, 
 												 thumbRect.origin.y + thumbRect.size.height / 2.0f); 
         realPositionValue = self.value;
-        
-        [self setThumbImage:highlightedThumb
-                   forState:UIControlStateNormal];
+        self.highlighted = YES;
     }
     return beginTracking;
 }
@@ -180,9 +172,7 @@
     {
         self.scrubbingSpeed = [[self.scrubbingSpeeds objectAtIndex:0] floatValue];
         [self sendActionsForControlEvents:UIControlEventValueChanged];
-        
-        [self setThumbImage:normalThumb
-                   forState:UIControlStateNormal];
+        self.highlighted = NO;
     }
 }
 
@@ -206,13 +196,6 @@
         }
     }
     return NSNotFound; 
-}
-
-
-- (void) loadImages
-{
-    normalThumb = [UIImage imageNamed:@"sliderThumbNormal.png"];
-    highlightedThumb = [UIImage imageNamed:@"sliderThumbHighlighted.png"];
 }
 
 

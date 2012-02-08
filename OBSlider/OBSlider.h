@@ -17,10 +17,6 @@
     CGPoint beganTrackingLocation;
 	
     float realPositionValue;
-    
-    UIImage* normalThumb;
-    UIImage* highlightedThumb;
-
 }
 
 - (void)scrubbingZoneDidChangeFrom:(NSUInteger)oldZone to:(NSUInteger)newZone;
